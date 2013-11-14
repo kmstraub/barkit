@@ -2,22 +2,37 @@
 <html>
 <head>
   <title>Barkit</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
 </head>
 <body>
-	<% if current_user %>
-    	<%= link_to "Log Out", sessions_destroy_path %>
-	<% else %>
-    	<%= form_tag sessions_create_path do %>
-     	   <%= text_field_tag :username, nil, placeholder: "username" %>
-     	   <%= password_field_tag :password, nil,  placeholder: "password" %>
-     	   <%= submit_tag "Log In" %>
-   		 <% end %>
-	<% end %>
-
-<%= yield %>
-
+  <header>
+    <div class="wrapper heading">
+      
+  <% if current_user %>
+    <%= link_to "My Profile", current_user %>
+    <%= link_to "Log Out", sessions_destroy_path %>
+  <% else %>
+    <%= form_tag sessions_create_path do %>
+       <%= text_field_tag :username, nil, placeholder: "username" %>
+       <%= password_field_tag :password, nil,  placeholder: "password" %>
+       <%= submit_tag "Log In" %>
+    <% end %>
+  <% end %>
+ 
+    </div>
+  </header>
+  <div id="content">
+    <div class="wrapper">
+        <% flash.each do |name, msg| %>
+            <%= content_tag :div, msg, class: "flash #{name}" %>
+        <% end %>
+        <%= yield %>
+    </div>
+  </div>
+  <footer>
+    
+  </footer>
 </body>
 </html>
