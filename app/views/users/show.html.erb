@@ -1,0 +1,27 @@
+<div id="createBarkit" class="panel right">
+    <h1>Create a Barkit</h1>
+    <p>
+    <form>
+        <textarea name="text" class="barkitText"></textarea>
+        <input type="submit" value="Barkit!">
+    </form>
+    </p>
+</div>
+<div id="barkit" class="panel left">
+    <h1>Your Barkit Profile</h1>
+    <div class="barkitWrapper">
+        
+        <span class="name"><%= @user.first_name %><%= @user.last_name %></span> @<%= @user.username %>
+        <p>
+        XX Barkits
+        <span class="spacing">XX Followers</span>
+        <span class="spacing">XX Following</span>
+        </p>
+    </div>
+</div>
+<div class="panel left">
+    <h1>Your Barkits</h1>
+    <div class="barkitWrapper">
+        Barkits coming . . .
+    </div>
+</div>

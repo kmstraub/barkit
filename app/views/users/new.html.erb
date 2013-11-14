@@ -1,0 +1,27 @@
+
+
+
+
+
+
+<div class="panel right">
+  <h1>New to Barkit?</h1>
+   
+  <%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+ 
+    <%= f.text_field :email, placeholder: "email" %><br>
+    <%= f.text_field :username, placeholder: "username" %><br>
+    <%= f.text_field :first_name, placeholder: "first name" %><br>
+    <%= f.text_field :last_name, placeholder: "last name" %><br>
+    <%= f.password_field :password, placeholder: "password" %><br>
+    <%= f.password_field :password_confirmation, placeholder: "password confirmation" %><br>
+    <%= f.submit "Create Account" %>
+  <% end %>
+</div>
