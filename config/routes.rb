@@ -1,5 +1,7 @@
 Barkit::Application.routes.draw do
  
+  resources :relationships
+
   resources :barks
 
   get "sessions/new"
@@ -8,6 +10,7 @@ Barkit::Application.routes.draw do
  
  resources :users
  
- 
  root to: 'users#new'
+
+ get 'buddies', to: 'users#buddies', as: 'buddies'
 end

@@ -1,17 +1,20 @@
 class BarksController < ApplicationController
-
-
-def create
-  @bark = Bark.new(bark_params)
-  @bark.user_id = current_user.id
- 
-  if @bark.save
-      redirect_to current_user 
-  else
-      flash[:error] = "Problem!"
-      redirect_to current_user
+  def index
+    @barks = Bark.all include: :user
+    @bark = Bark.new
   end
-end
+
+  def create
+    @bark = Bark.new(bark_params)
+    @bark.user_id = current_user.id
+   
+    if @bark.save
+        redirect_to current_user 
+    else
+        flash[:error] = "Problem!"
+        redirect_to current_user
+    end
+  end
 
 
 
