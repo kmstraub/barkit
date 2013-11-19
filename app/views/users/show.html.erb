@@ -1,19 +1,24 @@
 
 <% if current_user %>
-<div id="createBark" class="panel right">
-    <h1>Create a Bark</h1>
-    <p>
-      <%= form_for @bark do |f| %>
-        <%= f.text_area :content, class: 'barkText' %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Create a Bark</h3>
+  </div>
+  <div class="panel-body">
+   <%= form_for @bark do |f| %>
+        <%= f.text_area :content, class: 'form-control' %>
         <%= f.submit "Bark!" %>
       <% end %>
-    </p>
   </div>
+</div>
 <% end %>
-<div id="barks" class="panel left">
-    <h1>Your Barkit Profile</h1>
-    <div class="barkWrapper">
-        <span class="name"><%= @user.first_name %><%= @user.last_name %></span> @<%= @user.username %>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Barkit Profile</h3>
+    </div>
+    <div class="panel-body">
+        <span><strong><%= @user.first_name %> <%= @user.last_name %></span> @<%= @user.username %></strong>
         <p>
         <%= @user.barks.size %> Barks
         <span class="spacing"><%= @user.followers.count %> Followers</span>
@@ -33,14 +38,20 @@
         <% end %>
     </div>
 </div>
-<div class="panel left">
-    <h1>Your Barks</h1>
-    <% @user.barks.each do |bark| %>
-        <div class="barkWrapper">
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Barks</h3>
+  </div>
+  <div class="panel-body">
+    <div class="well"><% @user.barks.each do |bark| %>
+            <a href="<%= user_path bark.user %>">
             <span class="name"><%= @user.first_name %><%= @user.last_name %></span>
-            @<%= @user.username %> 
-            <span class="time"><%= time_ago_in_words(bark.created_at) %></span>
-            <p> <%= bark.content %> </p>
-        </div>
-    <% end %>
+            </a>
+              <span class="spacing"> @<%= @user.username %></span>
+               <span class="time"><%= time_ago_in_words(bark.created_at) %></span>
+            <p><%= bark.content %> </p>
+        <% end %>
+   
 </div>
+  </div>

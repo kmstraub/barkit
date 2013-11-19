@@ -1,19 +1,26 @@
-<div id="barks" class="panel left">
-    <h1>Public Profile</h1>
-    <% @users.each do |user| %>
-    <div class="barkWrapper">
-        <a href="<%= user_path user %>">
-        <span class="name"><%= user.first_name %><%= user.last_name %></span>
-        </a>
-        @<%= user.username %>
-        <p>
-        <%= user.barks.size %> Barks
-        <span class="spacing"><%= user.followers.count %> Followers</span>
-        <span class="spacing"><%= user.followeds.count %> Following</span>
-        </p>
-        <% if user.barks.first %>
-        <p><%= user.barks.first.content %></p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Public Profile</h3>
+  </div>
+  <div class="panel-body">
+    <div><% @users.each do |user| %>
+            <a href="<%= user_path user %>">
+            <span class="name"><%= user.first_name %><%= user.last_name %></span>
+            </a>
+              <span class="spacing"> @<%= user.username %></span>
+               <span class="spacing"><%= user.barks.size %> Barks</span>
+            <span class="spacing"><%= user.followers.count %> Followers</span>
+            <span class="spacing"><%= user.followeds.count %> Following</span>
+            </p>
+            <% if user.barks.first %>
+            <p class="well"><%= user.barks.first.content %></p>
+               
         <% end %>
-    </div>
-    <% end %>
+ 
+   <% end %>
 </div>
+  </div>
+</div>
+
+
+

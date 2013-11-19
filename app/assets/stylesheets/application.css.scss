@@ -7,7 +7,7 @@
  *
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
- *
+ *= require bootstrap
  *= require_self
  *= require_tree .
  */
@@ -16,18 +16,28 @@
     margin: 20px 0;
 }
 .error {
-        background: #ffefef;
-        color: #4c1717;
-        border: 1px solid #4c1717;
+        background: gray;
+        color: white;
+        border: 1px solid black;
 }
 .warning {
-        background: #ffe4c1;
-        color: #79420d;
-        border: 1px solid #79420d;
+        background: gray;
+        color: white;
+        border: 1px solid blace;
 }
 .notice {
-        background: #efffd7;
-        color: #8ba015;
-        border: 1px solid #8ba015;
+        background: gray;
+        color: white;
+        border: 1px solid black;
 }
 
+input {
+    margin: 10px;
+}
+.input-group {
+    margin: 0 auto;
+}
+
+.spacing {
+    margin: 10px;
+}

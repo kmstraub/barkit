@@ -1,25 +1,31 @@
 <% if current_user %>
-<div id="createBark" class="panel right">
-    <h1>Create a Bark</h1>
-    <p>
-    <%= form_for @bark do |f| %>
-        <%= f.text_area :content, class: 'barkText' %>
-        <%= f.submit "BARK!" %>
-    <% end %>
-    </p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Create a Bark</h3>
+  </div>
+  <div class="panel-body">
+   <%= form_for @bark do |f| %>
+        <%= f.text_area :content, class: 'form-control' %>
+        <%= f.submit "Bark!" %>
+      <% end %>
+  </div>
 </div>
 <% end %>
-<div class="panel left">
-    <h1>Buddies' Barks</h1>
-    <% @barks.each do |bark| %>
-        <div class="barkWrapper">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Buddies' Barks</h3>
+  </div>
+  <div class="panel-body">
+    <div class="well"><% @barks.each do |bark| %>
             <a href="<%= user_path bark.user %>">
-            
-            <span class="name"><%= bark.user.first_name %><%= bark.user.last_name %></span> 
+            <span class="name"><%= bark.user.first_name %><%= bark.user.last_name %></span>
             </a>
             @<%= bark.user.username %> 
             <span class="time"><%= time_ago_in_words(bark.created_at) %></span>
             <p> <%= bark.content %> </p>
-        </div>
-    <% end %>
+        <% end %>
+   </div>
+  </div>
 </div>
+
+
